@@ -27,7 +27,14 @@ public class Main {
             String inputLine = null;
             while ((inputLine = reader.readLine()) != null) {
                 System.out.println(inputLine);
-                helper.process(inputLine);
+                try {
+                    helper.doProcess(inputLine);
+                } catch (InvalidStatementException ex) {
+                    System.out.println("Error invalid statement: " + ex.getMessage());
+                    if (ex.getCause() != null) {
+                        System.out.println(" caused by " + ex.getCause());
+                    }
+                }
             }
 
         } catch (FileNotFoundException ex) {

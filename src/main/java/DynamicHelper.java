@@ -6,7 +6,18 @@ public class DynamicHelper {
         this.handlers = handlers;
     }
 
-    public void process(String statement) throws InvalidStatementException {
+    public void doProcess(String statement) throws InvalidStatementException {
+
+        try {
+            process(statement);
+        } catch (InvalidStatementException ex) {
+            throw ex;
+        } catch (ArithmeticException ex) {
+            throw new InvalidStatementException("Error executing statement", ex);
+        }
+    }
+
+    private void process(String statement) throws InvalidStatementException {
         // add 2 2
         String[] parts = statement.split(MathProcessing.SEPARATOR);
         if (parts.length != 3) {

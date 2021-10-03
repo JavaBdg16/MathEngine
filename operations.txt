@@ -2,3 +2,4 @@ add 12
 multiply 2 4
 substract 3 3
 divide 4 0.0
+divide 4 2
