@@ -6,9 +6,17 @@ public class DynamicHelper {
         this.handlers = handlers;
     }
 
-    public void process(String statement) {
+    public void process(String statement) throws InvalidStatementException {
         // add 2 2
         String[] parts = statement.split(MathProcessing.SEPARATOR);
+        if (parts.length != 3) {
+//            InvalidStatementException invalidStatementException =
+//                    new InvalidStatementException("Statement must have 3 parts: operation leftValue rightValue");
+
+            throw new InvalidStatementException(
+                    "Statement must have 3 parts: operation leftValue rightValue");
+        }
+
         String operation = parts[0];
         double leftValue = Double.parseDouble(parts[1]);
         double rightValue = Double.parseDouble(parts[2]);

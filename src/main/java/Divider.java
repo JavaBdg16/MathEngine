@@ -8,6 +8,12 @@ public class Divider extends CalculateBase implements MathProcessing {
 
     @Override
     public void calculate() {
+
+        // dla double dzielenie przez 0 działa i zwraca wartość Infinity
+        // wymuszamy wystąpienie wyjątku ArithmeticException
+        if (getRightValue() == 0.0d) {
+            setResult(0/0);
+        }
         double value = getLeftValue() / getRightValue();
         setResult(value);
     }
