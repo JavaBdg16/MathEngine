@@ -1,7 +1,10 @@
-public abstract class CalculateBase implements Calculateble {
+public abstract class CalculateBase {
     private double leftValue;
     private double rightValue;
     private double result;
+
+    public CalculateBase() {
+    }
 
     public CalculateBase(double leftValue, double rightValue) {
         this.leftValue = leftValue;
@@ -32,5 +35,5 @@ public abstract class CalculateBase implements Calculateble {
         this.result = result;
     }
 
-    // public abstract void calculate();
+    public abstract void calculate();
 }
