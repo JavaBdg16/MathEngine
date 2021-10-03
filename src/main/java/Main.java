@@ -34,6 +34,7 @@ public class Main {
                     if (ex.getCause() != null) {
                         System.out.println(" caused by " + ex.getCause());
                     }
+                    writeInvalidStatementException(ex, inputLine);
                 }
             }
 
@@ -44,5 +45,18 @@ public class Main {
         } catch (Exception ex) {
             System.out.println("Error processing file: " + ex.getMessage());
         }
+    }
+
+    private static void writeInvalidStatementException(Exception ex, String inputLine) {
+        System.err.println("");
+        System.err.println("*********************************");
+        System.err.println("Information written to log system");
+        System.err.println("*********************************");
+
+        System.err.println(ex.getMessage() + " - " + inputLine);
+        if (ex.getCause() != null) {
+            System.err.println(" caused by " + ex.getCause());
+        }
+        ex.printStackTrace(System.err);
     }
 }
